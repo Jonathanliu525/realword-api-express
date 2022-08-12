@@ -1,21 +1,10 @@
 const router = require('Express').Router();
+const authController = require('../controllers/authController');
 
-//Authentication
-router.post('/login', (req, res, next) => {
-  try {
-    res.send('Post /api/users/login');
-  } catch (error) {
-    next(error);
-  }
-});
+//Authentication;
+router.post('/login', authController.login);
 
 //Reegistration
-router.post('/', (req, res, next) => {
-  try {
-    res.send('Post /api/users');
-  } catch (error) {
-    next(error);
-  }
-});
+router.post('/', authController.register);
 
 module.exports = router;

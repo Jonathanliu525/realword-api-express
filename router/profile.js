@@ -1,30 +1,12 @@
 const router = require('express').Router();
-
+const profileController = require('../controllers/profileController');
 //Get Profiles
-router.get('/:username', (req, res, next) => {
-  try {
-    res.send('Get /api/profiles/:username');
-  } catch (error) {
-    next(error);
-  }
-});
+router.get('/:username', profileController.getProfile);
 
 //Follow user
-router.post('/:username/follow', (req, res, next) => {
-  try {
-    res.send('Post /api/profiles/:username/follow');
-  } catch (error) {
-    next(error);
-  }
-});
+router.post('/:username/follow', profileController.followUser);
 
 //Unfollow user
-router.delete('/:username/follow', (req, res, next) => {
-  try {
-    res.send('Delete /api/profiles/:username/follow');
-  } catch (error) {
-    next(error);
-  }
-});
+router.delete('/:username/follow', profileController.unfollowUser);
 
 module.exports = router;

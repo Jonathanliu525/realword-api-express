@@ -1,21 +1,10 @@
 const router = require('express').Router();
+const userController = require('../controllers/userController');
 
 //Get current user
-router.get('/', (req, res, next) => {
-  try {
-    res.send('Get /api/user');
-  } catch (error) {
-    next(error);
-  }
-});
+router.get('/', userController.getCurrentUser);
 
 //Update current user
-router.put('/', (req, res, next) => {
-  try {
-    res.send('Put /api/user');
-  } catch (error) {
-    next(error);
-  }
-});
+router.put('/', userController.updateCurrentUser);
 
 module.exports = router;
