@@ -2,4 +2,6 @@
  * Store the default configuration.
  */
 
-module.exports = {};
+module.exports = {
+  dbUrl: 'mongodb://localhost:27017/realworld',
+};
