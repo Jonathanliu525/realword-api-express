@@ -2,7 +2,7 @@ const { body } = require('express-validator');
 const { validate } = require('../middleware/validator');
 const { User } = require('../model');
 
-const register = validate([
+exports.register = validate([
   //Validate username
   body('user.username')
     .notEmpty()
@@ -30,7 +30,3 @@ const register = validate([
       }
     }),
 ]);
-
-module.exports = {
-  register,
-};

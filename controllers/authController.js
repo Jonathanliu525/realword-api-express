@@ -10,11 +10,11 @@ exports.login = async (req, res, next) => {
 //User regiter
 exports.register = async (req, res, next) => {
   try {
-    console.log(req.body);
-
-    const user = new User(req.body.user);
+    let user = new User(req.body.user);
 
     await user.save();
+    user = user.toJSON();
+    delete user.password;
     res.status(201).json({ user });
   } catch (error) {
     next(error);
