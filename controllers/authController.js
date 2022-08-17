@@ -11,7 +11,6 @@ exports.login = async (req, res, next) => {
 exports.register = async (req, res, next) => {
   try {
     let user = new User(req.body.user);
-
     await user.save();
     user = user.toJSON();
     delete user.password;

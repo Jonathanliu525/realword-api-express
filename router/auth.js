@@ -3,11 +3,7 @@ const authController = require('../controllers/authController');
 const userValidator = require('../validator/user');
 
 //Authentication;
-router.post(
-  '/login',
-
-  authController.login,
-);
+router.post('/login', userValidator.login, authController.login);
 
 //Registration
 router.post('/', userValidator.register, authController.register);
