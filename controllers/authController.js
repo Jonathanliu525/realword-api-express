@@ -1,8 +1,17 @@
 const { User } = require('../model');
+const jwt = require('../util/jwt');
+const { jwtSecret } = require('../config/config.default');
+
 //User login
 exports.login = async (req, res, next) => {
   try {
-    res.send('Post /api/users/login');
+    //1 Validate user
+
+    //2 Generate Token
+    const user = req.user.toJSON();
+    delete user.password;
+    const token = await jwt.sign({ userId: user._id }, jwtSecret); //3 Send token to client
+    res.status(200).json({ ...user, token });
   } catch (error) {
     next(error);
   }
