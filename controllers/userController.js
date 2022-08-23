@@ -1,7 +1,7 @@
 //Get current user
 exports.getCurrentUser = async (req, res, next) => {
   try {
-    res.send('Get /api/user');
+    res.status(200).json({ user: req.user });
   } catch (error) {
     next(error);
   }
