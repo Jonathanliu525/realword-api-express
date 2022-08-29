@@ -10,7 +10,11 @@ router.get('/', articleController.list);
 router.get('/feed', articleController.feed);
 
 //Get Articles
-router.get('/:slug', articleController.getArticle);
+router.get(
+  '/:articleId',
+  articleValidator.getArticle,
+  articleController.getArticle,
+);
 
 //Create Articles
 router.post(
@@ -24,12 +28,12 @@ router.post(
 router.put('/', articleController.updateArticle);
 
 //Delete Articles
-router.delete('/:slug', articleController.deleteArticles);
+router.delete('/:articleId', articleController.deleteArticles);
 
 //Favorite Articles
-router.post('/:slug/favorite', articleController.favoriteArticle);
+router.post('/:articleId/favorite', articleController.favoriteArticle);
 
 //Unfavorite Articles
-router.delete('/:slug', articleController.unfavoriteArticle);
+router.delete('/:articleId', articleController.unfavoriteArticle);
 
 module.exports = router;

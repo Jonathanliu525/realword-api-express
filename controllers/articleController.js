@@ -20,7 +20,11 @@ exports.feed = async (req, res, next) => {
 //Get Articles
 exports.getArticle = async (req, res, next) => {
   try {
-    res.send('Get /api/articles/:slug');
+    const article = await Article.findById(req.params.articleId).populate(
+      'author',
+    );
+    if (!article) res.status(404).end();
+    res.status(200).json({ article });
   } catch (error) {
     next(error);
   }
