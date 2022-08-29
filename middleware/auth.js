@@ -9,7 +9,7 @@ exports.auth = async (req, res, next) => {
 
   // Invalid => response 401
   if (!token) res.status(401).end();
-
+  console.log('This is auth');
   try {
     const { userId } = await jwt.verify(token, jwtSecret);
     req.user = await User.findById(userId);
